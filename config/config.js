@@ -1,4 +1,5 @@
 module.exports = {
+	BASE_URL: `http://localhost`,
 	PORT: 9443,
 	VIDEO_CONFIG: {
 		MAX_SIZE_MB: 25,
