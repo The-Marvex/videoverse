@@ -71,11 +71,11 @@ const trimVideo = async (req, res) => {
 
 		await trimVideoByDuration(inputPath, outputPath, startTime, endTime);
 
-		return res.json({
+		return {
 			fileName: outputFilename,
 			duration: duration,
 			watchLink: `/videos/watch/${outputFilename}`
-		});
+		};
 	} catch (error) {
 		return res.status(500).json({ error: 'Unable to trim video' });
 	}
@@ -101,11 +101,11 @@ const mergeVideos = async (req, res) => {
 
 		await mergeVideosList(videoPaths, outputPath);
 
-		return res.json({
+		return {
 			mergedVideoId: outputFilename,
 			duration: await getVideoDuration(outputPath),
 			watchLink: `/videos/watch/${outputFilename}`
-		});
+		};
 
 	} catch (error) {
 		res.status(500).json({ error: error.message });
@@ -136,11 +136,11 @@ const generateSharedLink = async (req, res) => {
 		await insertShareLink(id, token, expiresAt);
 		const shareableUrl = `${BASE_URL}:${PORT}/videos/share/${token}`;
 
-		res.status(201).json({
+		return {
 			message: 'Link generated',
 			sharedLink: shareableUrl,
 			expiresAt
-		});
+		}
 	} catch (error) {
 		console.error('Error generating shared link:', error);
 		res.status(500).json({ message: 'Internal server error' });
