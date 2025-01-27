@@ -64,7 +64,6 @@ const trimVideo = async (req, res) => {
 	const outputFilename = `trimmed-${uuidv4()}.mp4`;
 	const inputPath = path.resolve(__dirname, '..', video.file_path);
 	const outputPath = path.resolve(__dirname, '..', `uploads/${outputFilename}`);
-	console.log(outputFilename, outputPath);
 	try {
 		const startTime = trimType === 'start' ? 0 : video.duration - duration;
 		const endTime = trimType === 'start' ? duration : video.duration;
@@ -91,7 +90,6 @@ const mergeVideos = async (req, res) => {
 		if (videos.length !== ids.length) {
 			return res.status(404).json({ error: 'One or more videos not found' });
 		}
-		console.log('Videos', videos);
 		const videoPaths = videos.map(video =>
 			path.resolve(__dirname, '..', video.file_path)
 		);
