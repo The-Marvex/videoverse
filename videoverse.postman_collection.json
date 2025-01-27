@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "e9d7ad80-0ba9-4cd0-b359-6c140bde58af",
+		"name": "videoverse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9443/videos/share",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-token",
+						"value": "VIDEOVERSE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"expiresIn\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9443/videos/share"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9443/videos/trim",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-token",
+						"value": "VIDEOVERSE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"videoId\" : 6,\n    \"trimType\": \"end\",\n    \"duration\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9443/videos/trim"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9443/videos/upload",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-token",
+						"value": "VIDEOVERSE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "video",
+							"contentType": "file",
+							"type": "file",
+							"src": "/Users/manas/Downloads/10mb.mp4"
+						}
+					]
+				},
+				"url": "http://localhost:9443/videos/upload"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9443/videos/merge",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-token",
+						"value": "VIDEOVERSE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ids\": [1,2,3,4,5]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9443/videos/merge"
+			},
+			"response": []
+		}
+	]
+}
